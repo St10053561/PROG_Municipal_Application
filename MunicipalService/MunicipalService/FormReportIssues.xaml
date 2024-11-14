@@ -1,0 +1,224 @@
+﻿<Window x:Name="___No_Name_" x:Class="MunicipalService.FormReportIssues"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MunicipalService"
+        xmlns:classes="clr-namespace:MunicipalService.Classes"
+        mc:Ignorable="d"
+        Title="Report an Issue" Height="525" Width="445" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Window.Resources>
+        <!-- Define the BooleanToVisibilityConverter resource -->
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <!-- Define the InverseBooleanToVisibilityConverter resource -->
+        <classes:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+    </Window.Resources>
+    <Grid Background="#F0F0F0">
+        <!-- Custom Title Bar -->
+        <Border Background="SteelBlue" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5">
+            <Grid>
+                <!-- Title Text -->
+                <TextBlock Text="Municipal Services Report Hub" Foreground="White" FontSize="16" 
+                       FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+
+                <!-- Window Control Buttons -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <!-- Minimize Button -->
+                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
+                        Click="MinimizeButton_Click">
+                        <TextBlock Text="_" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#4682B4"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+
+                    <!-- Close Button -->
+                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
+                        Click="CloseButton_Click">
+                        <TextBlock Text="X" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Crimson"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main Content with ScrollViewer -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,40,0,0">
+            <Grid>
+                <!-- Title -->
+                <Label Content="Report an Issue" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                   FontFamily="Bahnschrift SemiCondensed" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+
+                <!-- Location Input -->
+                <Label Content="Location" HorizontalAlignment="Left" VerticalAlignment="Top" 
+       FontFamily="Microsoft Tai Le" Margin="0,80,0,0" FontSize="18"/>
+                <Grid>
+                    <TextBox x:Name="LocationTxtbx" HorizontalAlignment="Left" Margin="140,75,0,0" VerticalAlignment="Top" 
+             Width="250" Height="30" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1"
+             TextChanged="LocationTxtbx_TextChanged"/>
+                    <Popup x:Name="LocationPopup" PlacementTarget="{Binding ElementName=LocationTxtbx}" 
+           Placement="Bottom" Width="250" Height="200" Visibility="Collapsed">
+                        <ListBox x:Name="LocationListBox" ItemsSource="{Binding}" 
+                 SelectionChanged="LocationListBox_SelectionChanged" />
+                    </Popup>
+                </Grid>
+
+                <!-- Category Selection -->
+                <Label Content="Category" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                   FontFamily="Microsoft Tai Le" Margin="0,130,0,0" FontSize="18"/>
+                <ComboBox x:Name="CategoryComboBx" HorizontalAlignment="Left" Margin="140,130,0,0" VerticalAlignment="Top" 
+                      Width="250" Height="30" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1">
+                    <ComboBoxItem Content="Sanitation"/>
+                    <ComboBoxItem Content="Roads"/>
+                    <ComboBoxItem Content="Utilities"/>
+                    <ComboBoxItem Content="Other"/>
+                </ComboBox>
+
+                <!-- Problem Description -->
+                <Label Content="Description" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                   FontFamily="Microsoft Tai Le" Margin="0,180,0,0" FontSize="18"/>
+                <RichTextBox x:Name="DescriptionRichTxtbox" HorizontalAlignment="Left" Margin="140,180,0,0" 
+                         VerticalAlignment="Top" Width="250" Height="80" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1">
+                    <FlowDocument>
+                        <Paragraph/>
+                    </FlowDocument>
+                </RichTextBox>
+
+                <!-- Media Attachment -->
+                <Label Content="Attach Media" HorizontalAlignment="Left" VerticalAlignment="Top" 
+                   FontFamily="Microsoft Tai Le" Margin="0,280,0,0" FontSize="18"/>
+                <Button x:Name="MediaAttachBtn" Content="Upload File" HorizontalAlignment="Left" Margin="140,280,0,0" 
+                    VerticalAlignment="Top" Width="240" Height="30" Background="#4CAF50" Foreground="White" FontWeight="Bold" 
+                    Click="MediaAttachBtn_Click">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#4CAF50"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#43A047"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Label x:Name="lblFileName" Content="" HorizontalAlignment="Left" Margin="132,310,0,0" VerticalAlignment="Top"/>
+
+                <!-- ScrollViewer for ItemsControl and Buttons Section -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="7,325,-7,15">
+                    <StackPanel>
+                        <!-- ItemsControl for displaying images and documents -->
+                        <ItemsControl x:Name="FilesItemsControl" HorizontalAlignment="Left" Margin="140,0,0,0" VerticalAlignment="Top" Width="250">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" Margin="5" Width="150" Height="150">
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="*"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Text="{Binding FileName}" FontWeight="Bold" Margin="5" Grid.Row="0"/>
+                                            <Image Source="{Binding FilePath}" Width="120" Height="120" Stretch="Uniform" Margin="5" Grid.Row="1" Visibility="{Binding IsImage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                            <Image Source="{Binding FileIconPath}" Width="120" Height="120" Stretch="Uniform" Margin="5" Grid.Row="1" Visibility="{Binding IsImage, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
+                                            <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Right" Margin="5" Grid.Row="2" Click="DeleteButton_Click">
+                                                <Button.Template>
+                                                    <ControlTemplate TargetType="Button">
+                                                        <Border Background="Red" CornerRadius="5">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Button.Template>
+                                            </Button>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+
+                        <!-- Progress Bar -->
+                        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="25" Margin="140,60,0,0" VerticalAlignment="Top" Width="250"/>
+
+                        <!-- Buttons Section -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,50,10,0" Width="279" Height="35">
+                            <Button x:Name="BackToMainMenuBtn" Content="Back to Menu" Width="120" Height="35" Margin="0,0,10,0" 
+        Background="#64B5F6" Foreground="White" FontWeight="Bold" Click="BackToMainMenuBtn_Click">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#64B5F6"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#42A5F5"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                            <Button x:Name="SubmitBtn" Content="Submit" Width="114" Height="35" Margin="0,0,0,0" 
+                                Background="#FF7043" Foreground="White" FontWeight="Bold" Click="SubmitBtn_Click" IsEnabled="False">
+                                <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}" CornerRadius="5">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="#FF7043"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Background" Value="#F4511E"/>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
