@@ -25,6 +25,9 @@ namespace MunicipalService.Classes
         }
         public List<string> ImagePaths { get; set; } = new List<string>(); // Change to List<string>
 
+        // Add Priority property
+        public int Priority { get; set; } // You can define the type as needed (e.g., int, string, etc.)
+
         // Empty constructor
         public IssueReport()
         {

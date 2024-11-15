@@ -1,16 +1,16 @@
-﻿using System; 
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq; 
+using System.Linq;
 using System.Text;
-using System.Threading.Tasks; 
-using System.Windows; 
-using System.Windows.Controls; 
-using System.Windows.Documents; 
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
-using MunicipalService.Classes; 
+using MunicipalService.Classes;
 
 namespace MunicipalService
 {
@@ -54,6 +54,7 @@ namespace MunicipalService
                 // Exception Handling for the form fields
                 ExceptionHandling.ValidateFormFields(LocationTxtbx.Text, CategoryComboBx.Text, new TextRange(DescriptionRichTxtbox.Document.ContentStart, DescriptionRichTxtbox.Document.ContentEnd).Text);
 
+                // Create new report
                 IssueReport newReport = new IssueReport
                 {
                     ReportNumber = GetNextReportNumber(), // Set the report number
@@ -63,11 +64,13 @@ namespace MunicipalService
                     Description = new TextRange(DescriptionRichTxtbox.Document.ContentStart, DescriptionRichTxtbox.Document.ContentEnd).Text, // Set the description
                     Attachments = new List<string>(attachedFiles), // Set the attachments
                     Date = DateTime.Now, // Set the date to the current date
-                    ImagePaths = attachedFiles.Where(IsImageFile).ToList() // Set the image paths if any images are uploaded
+                    ImagePaths = attachedFiles.Where(IsImageFile).ToList(), // Set the image paths if any images are uploaded
+                    Priority = issueReports.Count + 1 // Set the priority based on the number of existing reports
                 };
 
                 // Add the new report to the ReportStorage
                 ReportStorage.AddReport(newReport);
+                issueReports.Add(newReport); // Add the new report to the local list
 
                 // After validating and storing the issue
                 MessageBox.Show("Thank you for reporting! Your issue has been submitted.", "Submission Successful", MessageBoxButton.OK, MessageBoxImage.Information);
