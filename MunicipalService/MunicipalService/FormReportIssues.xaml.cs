@@ -65,7 +65,7 @@ namespace MunicipalService
                     Attachments = new List<string>(attachedFiles), // Set the attachments
                     Date = DateTime.Now, // Set the date to the current date
                     ImagePaths = attachedFiles.Where(IsImageFile).ToList(), // Set the image paths if any images are uploaded
-                    Priority = issueReports.Count + 1 // Set the priority based on the number of existing reports
+                    Priority = PriorityCheckBox.IsChecked == true ? 1 : 0 // Set priority based on checkbox
                 };
 
                 // Add the new report to the ReportStorage
@@ -83,6 +83,7 @@ namespace MunicipalService
                 attachedFiles.Clear();
                 isImageUploaded = false;
                 Files.Clear();
+                PriorityCheckBox.IsChecked = false; // Reset the checkbox
             }
             catch (ArgumentException ex)
             {

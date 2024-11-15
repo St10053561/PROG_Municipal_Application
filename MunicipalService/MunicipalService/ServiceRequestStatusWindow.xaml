@@ -9,6 +9,7 @@
         WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Window.Resources>
         <local:StatusToColorConverter x:Key="StatusToColorConverter"/>
+        <local:PriorityToImageConverter x:Key="PriorityToImageConverter"/>
     </Window.Resources>
     <Grid Background="#FAFAFA">
         <Grid.RowDefinitions>
@@ -49,7 +50,6 @@
             <Button Content="Show High Priority Reports" Click="ShowHighPriorityReportsButton_Click" Margin="5"/>
         </StackPanel>
 
-        <!-- Reports List Section -->
         <ListBox x:Name="ReportsListBox" Grid.Row="3" Margin="15" Background="Transparent" BorderThickness="0"
                  SelectionChanged="ReportsListBox_SelectionChanged">
             <ListBox.ItemTemplate>
@@ -57,11 +57,17 @@
                     <Border Background="White" CornerRadius="5" Padding="15" Margin="10" BorderBrush="#D0D0D0" BorderThickness="1">
                         <Grid>
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <!-- For the priority icon -->
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding ReportNumber, StringFormat='Report #{0}'}" FontWeight="SemiBold" FontSize="16" Grid.Column="0"/>
-                            <TextBlock Text="{Binding Status}" FontSize="14" Foreground="{Binding Status, Converter={StaticResource StatusToColorConverter}}" Grid.Column="1"/>
+                            <!-- Priority Icon -->
+                            <Image Width="16" Height="16" 
+                                   Source="{Binding Priority, Converter={StaticResource PriorityToImageConverter}}"
+                                   Margin="0,0,5,0"/>
+                            <TextBlock Text="{Binding ReportNumber, StringFormat='Report #{0}'}" FontWeight="SemiBold" FontSize="16" Grid.Column="1"/>
+                            <TextBlock Text="{Binding Status}" FontSize="14" Foreground="{Binding Status, Converter={StaticResource StatusToColorConverter}}" Grid.Column="2"/>
                         </Grid>
                     </Border>
                 </DataTemplate>
@@ -70,7 +76,7 @@
 
         <!-- Report Details Section -->
         <Border x:Name="ReportDetailsBorder" Grid.Row="3" Margin="15" Padding="20" Background="White" CornerRadius="5" 
-        BorderBrush="#D0D0D0" BorderThickness="1" Visibility="Collapsed">
+                BorderBrush="#D0D0D0" BorderThickness="1" Visibility="Collapsed">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>

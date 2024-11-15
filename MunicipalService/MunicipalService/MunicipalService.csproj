@@ -80,6 +80,7 @@
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\LocationService.cs" />
     <Compile Include="Classes\MinHeap.cs" />
+    <Compile Include="Classes\PriorityToImageConverter.cs" />
     <Compile Include="Classes\ReportStorage.cs" />
     <Compile Include="Classes\StatusToColorConverter.cs" />
     <Compile Include="DisplayReport.xaml.cs">
@@ -204,6 +205,9 @@
     <Resource Include="Images\communityyardsale.jpg" />
     <Resource Include="Images\neighborhoodcleanup.jpg" />
     <Resource Include="Images\volunteerfair.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\high_priority_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
