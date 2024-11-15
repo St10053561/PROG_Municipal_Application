@@ -35,7 +35,11 @@ namespace MunicipalService
             ReportsListBox.ItemsSource = previousReports;
             ReportsListBox.SelectionChanged += ReportsListBox_SelectionChanged;
         }
-
+        private void CloseDetailsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ReportDetailsBorder.Visibility = Visibility.Collapsed; // Hide the report details
+            ReportsListBox.SelectedItem = null; // Reset the selection to trigger the SelectionChanged event
+        }
         private void ReportsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ReportsListBox.SelectedItem != null)
@@ -86,7 +90,6 @@ namespace MunicipalService
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Show();
             this.Hide();
         }
 
