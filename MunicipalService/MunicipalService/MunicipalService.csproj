@@ -76,13 +76,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\BinarySearchTree.cs" />
     <Compile Include="Classes\Constants.cs" />
     <Compile Include="Classes\LocationService.cs" />
     <Compile Include="Classes\ReportStorage.cs" />
     <Compile Include="Classes\StatusToColorConverter.cs" />
-    <Compile Include="ViewReportsWindow.xaml.cs">
-      <DependentUpon>ViewReportsWindow.xaml</DependentUpon>
+    <Compile Include="DisplayReport.xaml.cs">
+      <DependentUpon>DisplayReport.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ServiceRequestStatusWindow.xaml.cs">
+      <DependentUpon>ServiceRequestStatusWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="DisplayReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EventDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,7 +131,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ViewReportsWindow.xaml">
+    <Page Include="ServiceRequestStatusWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

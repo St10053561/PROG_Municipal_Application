@@ -74,19 +74,24 @@ namespace MunicipalService
 
         // Event handler for Service button click
         private void ServiceBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("This feature will be implemented soon.", "Coming Soon", MessageBoxButton.OK, MessageBoxImage.Information);
+        {// Get the reports from ReportStorage
+            List<IssueReport> issueReports = ReportStorage.GetReports();
+
+            // Create a new window to display the reports
+            ServiceRequestWindow viewReportsWindow = new ServiceRequestWindow(issueReports);
+            viewReportsWindow.ShowDialog(); // Show the reports window as a dialog
         }
 
         // Event handler for View Reports button click
         private void ViewReportsBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Get the reports from ReportStorage
-            List<IssueReport> issueReports = ReportStorage.GetReports();
+            //// Get the reports from ReportStorage
+            //List<IssueReport> issueReports = ReportStorage.GetReports();
 
-            // Create a new window to display the reports
-            ViewReportsWindow viewReportsWindow = new ViewReportsWindow(issueReports);
-            viewReportsWindow.ShowDialog(); // Show the reports window as a dialog
+            //// Create a new window to display the reports
+            DisplayReport displayReport = new DisplayReport();
+            displayReport.Show(); // Show the reports window
+            this.Hide(); // Hide the main window
         }
 
         // Event handler for Show Events button click
