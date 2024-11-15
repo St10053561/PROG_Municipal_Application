@@ -13,24 +13,19 @@ namespace MunicipalService.Classes
         public string Location { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
-        public List<string> Attachments { get; set; } = new List<string>(); // Change to List<string>
+        public List<string> Attachments { get; set; } = new List<string>();
         public string Feedback { get; set; }
         public DateTime Date { get; set; }
         public string Status
         {
             get
             {
-                return (DateTime.Now - Date).TotalDays > 2 ? "Succeeded" : "Pending";
+                return (DateTime.Now - Date).TotalMinutes > 1 ? "Succeeded" : "Pending";
             }
         }
-        public List<string> ImagePaths { get; set; } = new List<string>(); // Change to List<string>
+        public List<string> ImagePaths { get; set; } = new List<string>();
+        public int Priority { get; set; }
 
-        // Add Priority property
-        public int Priority { get; set; } // You can define the type as needed (e.g., int, string, etc.)
-
-        // Empty constructor
-        public IssueReport()
-        {
-        }
+        public IssueReport() { }
     }
 }

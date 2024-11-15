@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
-using System.Text;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using MunicipalService.Classes;
+using Newtonsoft.Json;
 
 namespace MunicipalService
 {
@@ -19,13 +21,13 @@ namespace MunicipalService
     /// </summary>
     public partial class FormReportIssues : Window
     {
+        private const string TempFilePath = "tempReports.json";
         List<IssueReport> issueReports = new List<IssueReport>(); // List to store issue reports
         private bool isImageUploaded = false; // Flag to check if an image is uploaded
         private List<string> attachedFiles = new List<string>(); // List to store attached files
         private BackgroundWorker backgroundWorker; // BackgroundWorker for handling background tasks
         private MainWindow mainWindow;
         public ObservableCollection<FileItem> Files { get; set; } = new ObservableCollection<FileItem>();
-
 
         private int GetNextReportNumber()
         {
@@ -37,6 +39,12 @@ namespace MunicipalService
             InitializeComponent(); // Initialize the components
             this.Closed += FormReportIssues_FormClosed; // Event handler for form closed event
             this.progressBar.Visibility = Visibility.Hidden; // Hide the progress bar initially
+
+            // Load reports from temporary file
+            LoadReportsFromTempFile();
+
+            // Remove expired reports after loading
+            RemoveExpiredReports();
 
             // Initialize BackgroundWorker
             backgroundWorker = new BackgroundWorker();
@@ -71,6 +79,9 @@ namespace MunicipalService
                 // Add the new report to the ReportStorage
                 ReportStorage.AddReport(newReport);
                 issueReports.Add(newReport); // Add the new report to the local list
+
+                // Save reports to temporary file
+                SaveReportsToTempFile();
 
                 // After validating and storing the issue
                 MessageBox.Show("Thank you for reporting! Your issue has been submitted.", "Submission Successful", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -269,6 +280,40 @@ namespace MunicipalService
             {
                 Files.Remove(fileItem); // Remove the file item from the collection
                 attachedFiles.Remove(fileItem.FilePath); // Remove the file path from the attached files list
+            }
+        }
+
+        private void SaveReportsToTempFile()
+        {
+            var json = JsonConvert.SerializeObject(issueReports);
+            File.WriteAllText(TempFilePath, json);
+        }
+
+        private void LoadReportsFromTempFile()
+        {
+            if (File.Exists(TempFilePath))
+            {
+                var json = File.ReadAllText(TempFilePath);
+                issueReports = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>();
+            }
+        }
+
+        private void RemoveExpiredReports()
+        {
+            if (File.Exists(TempFilePath))
+            {
+                var json = File.ReadAllText(TempFilePath);
+                var reports = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>();
+
+                // Remove reports older than 7 days
+                reports.RemoveAll(report => (DateTime.Now - report.Date).TotalDays > 7);
+
+                // Save the remaining reports back to the file
+                var updatedJson = JsonConvert.SerializeObject(reports);
+                File.WriteAllText(TempFilePath, updatedJson);
+
+                // Update the local issueReports list
+                issueReports = reports;
             }
         }
     }
