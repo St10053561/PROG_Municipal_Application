@@ -135,7 +135,15 @@ namespace MunicipalService
         private void ShowHighPriorityReportsButton_Click(object sender, RoutedEventArgs e)
         {
             var highPriorityReports = minHeap.GetAllReports();
+
+            // Set the ItemsSource of the ReportsListBox to the high-priority reports
             ReportsListBox.ItemsSource = highPriorityReports;
+
+            // Automatically select the first item if there are any high-priority reports
+            if (highPriorityReports.Count > 0)
+            {
+                ReportsListBox.SelectedIndex = 0; // Select the first report
+            }
         }
     }
 }
