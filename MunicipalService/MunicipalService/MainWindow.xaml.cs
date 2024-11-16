@@ -78,7 +78,8 @@ namespace MunicipalService
             List<IssueReport> issueReports = ReportStorage.GetReports();
 
             // Create a new window to display the reports
-            ServiceRequestWindow viewReportsWindow = new ServiceRequestWindow(issueReports);
+            //ServiceRequestWindow viewReportsWindow = new ServiceRequestWindow(issueReports);
+            ServiceRequestWindow viewReportsWindow = new ServiceRequestWindow(); 
             viewReportsWindow.ShowDialog(); // Show the reports window as a dialog
         }
 

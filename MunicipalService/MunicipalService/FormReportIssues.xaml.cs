@@ -21,7 +21,7 @@ namespace MunicipalService
     /// </summary>
     public partial class FormReportIssues : Window
     {
-        private const string TempFilePath = "tempReports.json";
+        public const string TempFilePath = "tempReports.json";
         List<IssueReport> issueReports = new List<IssueReport>(); // List to store issue reports
         private bool isImageUploaded = false; // Flag to check if an image is uploaded
         private List<string> attachedFiles = new List<string>(); // List to store attached files

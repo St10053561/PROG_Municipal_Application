@@ -1,6 +1,9 @@
 ﻿using MunicipalService.Classes;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -14,32 +17,48 @@ namespace MunicipalService
     public partial class ServiceRequestWindow : Window
     {
         private List<IssueReport> previousReports;
+        private List<IssueReport> originalReports; // Store the original reports
         private BinarySearchTree bst;
         private MinHeap minHeap;
 
-        public ServiceRequestWindow(List<IssueReport> previousReports)
+        public ServiceRequestWindow()
         {
             InitializeComponent();
-            this.previousReports = previousReports;
-
-            bst = new BinarySearchTree();
-            minHeap = new MinHeap();
-
-            for (int i = 0; i < previousReports.Count; i++)
-            {
-                previousReports[i].ReportNumber = i + 1;
-                bst.Insert(previousReports[i]);
-                minHeap.Insert(previousReports[i]);
-            }
-
-            ReportsListBox.ItemsSource = previousReports;
-            ReportsListBox.SelectionChanged += ReportsListBox_SelectionChanged;
+            LoadReports(); // Load reports from the temporary file
         }
+
+        private void LoadReports()
+        {
+            if (File.Exists(FormReportIssues.TempFilePath))
+            {
+                var json = File.ReadAllText(FormReportIssues.TempFilePath);
+                previousReports = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>();
+                originalReports = new List<IssueReport>(previousReports); // Store the original reports
+
+                // Initialize BST and MinHeap
+                bst = new BinarySearchTree();
+                minHeap = new MinHeap();
+
+                // Add reports to BST and MinHeap
+                for (int i = 0; i < previousReports.Count; i++)
+                {
+                    previousReports[i].ReportNumber = i + 1;
+                    bst.Insert(previousReports[i]);
+                    minHeap.Insert(previousReports[i]);
+                }
+
+                // Set the ItemsSource of the ReportsListBox
+                ReportsListBox.ItemsSource = previousReports;
+                ReportsListBox.SelectionChanged += ReportsListBox_SelectionChanged;
+            }
+        }
+
         private void CloseDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             ReportDetailsBorder.Visibility = Visibility.Collapsed; // Hide the report details
             ReportsListBox.SelectedItem = null; // Reset the selection to trigger the SelectionChanged event
         }
+
         private void ReportsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (ReportsListBox.SelectedItem != null)
@@ -79,7 +98,7 @@ namespace MunicipalService
             }
             else
             {
-                ReportDetailsBorder.Visibility = Visibility.Collapsed;
+                ReportDetailsBorder.Visibility = Visibility.Collapsed; // Hide details if no selection
             }
         }
 
@@ -134,16 +153,39 @@ namespace MunicipalService
 
         private void ShowHighPriorityReportsButton_Click(object sender, RoutedEventArgs e)
         {
-            var highPriorityReports = minHeap.GetAllReports();
+            // Filter high-priority reports
+            var highPriorityReports = originalReports.Where(report => report.Priority == 1).ToList();
 
             // Set the ItemsSource of the ReportsListBox to the high-priority reports
             ReportsListBox.ItemsSource = highPriorityReports;
 
-            // Automatically select the first item if there are any high-priority reports
-            if (highPriorityReports.Count > 0)
+            // Clear selection to avoid showing details
+            ReportsListBox.SelectedItem = null;
+
+            // Hide the report details
+            ReportDetailsBorder.Visibility = Visibility.Collapsed;
+
+            // Notify the user if no high-priority reports are found
+            if (highPriorityReports.Count == 0)
+            {
+                MessageBox.Show("No high-priority reports found.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void ShowAllReports()
+        {
+            ReportsListBox.ItemsSource = originalReports; // Reset to the original list of reports
+
+            // Automatically select the first item if there are any reports
+            if (originalReports.Count > 0)
             {
                 ReportsListBox.SelectedIndex = 0; // Select the first report
             }
+        }
+
+        private void ShowAllReportsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowAllReports(); // Call the method to show all reports
         }
     }
 }

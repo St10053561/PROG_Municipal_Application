@@ -48,6 +48,7 @@
                      GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus"/>
             <Button Content="Search" Click="SearchButton_Click" Margin="5"/>
             <Button Content="Show High Priority Reports" Click="ShowHighPriorityReportsButton_Click" Margin="5"/>
+            <Button Content="Show All Reports" Click="ShowAllReportsButton_Click" />
         </StackPanel>
 
         <ListBox x:Name="ReportsListBox" Grid.Row="3" Margin="15" Background="Transparent" BorderThickness="0"
