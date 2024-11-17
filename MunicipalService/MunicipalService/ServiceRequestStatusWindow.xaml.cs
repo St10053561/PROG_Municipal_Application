@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,8 @@ namespace MunicipalService
     /// </summary>
     public partial class ServiceRequestWindow : Window
     {
-        private List<IssueReport> previousReports; // List to store previous issue reports
-        private List<IssueReport> originalReports; // List to store the original reports
+        private ObservableCollection<IssueReport> previousReports; // ObservableCollection for previous issue reports
+        private ObservableCollection<IssueReport> originalReports; // ObservableCollection for original reports
         private BinarySearchTree bst; // Binary search tree for issue reports
         private MinHeap minHeap; // Min-heap for issue reports
         private ReportGraph reportGraph; // Graph structure for issue reports
@@ -56,14 +57,16 @@ namespace MunicipalService
             if (File.Exists(FormReportIssues.TempFilePath)) // Check if the temporary file exists
             {
                 var json = File.ReadAllText(FormReportIssues.TempFilePath); // Read the JSON content from the file
-                previousReports = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>(); // Deserialize the JSON content to a list of IssueReport
-                originalReports = new List<IssueReport>(previousReports); // Store the original reports
+                var reportsList = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>(); // Deserialize the JSON content to a list of IssueReport
+
+                previousReports = new ObservableCollection<IssueReport>(reportsList); // Initialize ObservableCollection for previous reports
+                originalReports = new ObservableCollection<IssueReport>(reportsList); // Initialize ObservableCollection for original reports
 
                 // Initialize BST and MinHeap
                 bst = new BinarySearchTree(); // Initialize the binary search tree
                 minHeap = new MinHeap(); // Initialize the min-heap
 
-                // Add reports to BST and MinHeap
+                // Assign report numbers and add to BST and MinHeap
                 for (int i = 0; i < previousReports.Count; i++)
                 {
                     previousReports[i].ReportNumber = i + 1; // Assign report numbers
@@ -71,7 +74,6 @@ namespace MunicipalService
                     minHeap.Insert(previousReports[i]); // Insert report into MinHeap
                 }
 
-                // Set the ItemsSource of the ReportsListBox
                 ReportsListBox.ItemsSource = previousReports; // Bind the list of reports to the ListBox
                 ReportsListBox.SelectionChanged += ReportsListBox_SelectionChanged; // Attach the selection changed event handler
             }
@@ -201,7 +203,7 @@ namespace MunicipalService
             var highPriorityReports = originalReports.Where(report => report.Priority == 1).ToList(); // Get high-priority reports
 
             // Set the ItemsSource of the ReportsListBox to the high-priority reports
-            ReportsListBox.ItemsSource = highPriorityReports; // Bind the high-priority reports to the ListBox
+            ReportsListBox.ItemsSource = new ObservableCollection<IssueReport>(highPriorityReports); // Bind the high-priority reports to the ListBox
 
             // Clear selection to avoid showing details
             ReportsListBox.SelectedItem = null; // Clear the selected report
