@@ -26,15 +26,24 @@ The Municipal Services Application helps streamline municipal services in South 
      - Click on the Blue Button called '<> Code'
      - Click on Download Zip
      - Extract the 'PROG_Municipal_Application-main.zip'
-  
-### 2. **Download the Project**
-   - Download the `.zip` file named **`ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_PART 3`** from the specified repository or location.
 
-### 3. **Extract the ZIP File**
+### 1.2. **Extract the ZIP File**
    - Extract the downloaded ZIP to a local folder.
    - Locate the solution file: **`MunicipalService.sln`**.
 
-### 4. **Open in Visual Studio**
+### 1.3. **Open in Visual Studio**
+   - Launch Visual Studio 2022.
+   - Go to **File** → **Open** → **Project/Solution**.
+   - Navigate to the extracted folder and select **`MunicipalService.sln`**.
+
+### 2 **Download the Manual Project**
+Download the .zip file named ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_PART 3 from the specified repository or location.
+
+### 2.2. **Extract the ZIP File**
+   - Extract the downloaded ZIP to a local folder.
+   - Locate the solution file: **`MunicipalService.sln`**.
+
+### 2.3. **Open in Visual Studio**
    - Launch Visual Studio 2022.
    - Go to **File** → **Open** → **Project/Solution**.
    - Navigate to the extracted folder and select **`MunicipalService.sln`**.
