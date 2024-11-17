@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
 
         <!-- Custom Title Bar -->
-        <Border Background="SteelBlue" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5">
+        <Border Background="SteelBlue" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5" MouseDown="TitleBar_MouseDown">
             <Grid>
                 <!-- Title Text -->
                 <TextBlock Text="Municipal Services Report Hub" Foreground="White" FontSize="16" 

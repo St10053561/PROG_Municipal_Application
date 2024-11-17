@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Input;
 using System.Windows.Threading;
 using MunicipalService.Classes;
 using Newtonsoft.Json.Linq;
@@ -107,6 +108,17 @@ namespace MunicipalService
         {
             EventsPopup.IsOpen = false; // Close the events popup
             Application.Current.Shutdown(); // Close the application
+        }
+
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Check if the left mouse button is pressed
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Capture the mouse and move the window
+                this.DragMove();
+            }
         }
 
         // Event handler for Local button click

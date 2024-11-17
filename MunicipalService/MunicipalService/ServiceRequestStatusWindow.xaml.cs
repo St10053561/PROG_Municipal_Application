@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -138,6 +139,17 @@ namespace MunicipalService
             {
                 SearchTextBox.Text = "Enter Report Number";
                 SearchTextBox.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Check if the left mouse button is pressed
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Capture the mouse and move the window
+                this.DragMove();
             }
         }
 

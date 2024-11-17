@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using Microsoft.Win32;
 using MunicipalService.Classes;
 using Newtonsoft.Json;
+using System.Windows.Input;
 
 namespace MunicipalService
 {
@@ -284,6 +285,16 @@ namespace MunicipalService
             {
                 Files.Remove(fileItem); // Remove the file item from the collection
                 attachedFiles.Remove(fileItem.FilePath); // Remove the file path from the attached files list
+            }
+        }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Check if the left mouse button is pressed
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Capture the mouse and move the window
+                this.DragMove();
             }
         }
 

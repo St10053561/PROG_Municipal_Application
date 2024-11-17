@@ -45,6 +45,17 @@ namespace MunicipalService
             InitializeEventData(); // Initialize event data
         }
 
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            // Check if the left mouse button is pressed
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Capture the mouse and move the window
+                this.DragMove();
+            }
+        }
+
         /// <summary>
         /// Initializes event data and sets up initial display
         /// </summary>

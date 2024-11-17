@@ -15,25 +15,14 @@
     </Window.Resources>
     <Grid Background="LightGray">
         <!-- Custom Title Bar -->
-        <Border Background="#2E3A47" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5">
+        <Border Background="#2E3A47" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5" MouseDown="TitleBar_MouseDown">
             <Grid Margin="0,0,0,-2">
-                <!-- Title Text -->
-                <TextBlock Text="Local Events" Foreground="White" FontSize="16" 
-                   FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock Text="Local Events" Foreground="White" FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBlock x:Name="CurrentTimeTextBlock" Foreground="White" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,90,0"/>
+                <TextBlock x:Name="CurrentTemperatureTextBlock" Foreground="White" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,110,0"/>
 
-                <!-- Current Time and Day -->
-                <TextBlock x:Name="CurrentTimeTextBlock" Foreground="White" FontSize="16" 
-                    VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,90,0"/>
-
-                <!-- Current Temperature -->
-                <TextBlock x:Name="CurrentTemperatureTextBlock" Foreground="White" FontSize="16" 
-                   VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,110,0"/>
-
-                <!-- Window Control Buttons -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
-                    <!-- Minimize Button -->
-                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
-                    Click="MinimizeButton_Click">
+                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" Click="MinimizeButton_Click">
                         <TextBlock Text="_" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Width="8"/>
                         <Button.Style>
                             <Style TargetType="Button">
@@ -47,9 +36,7 @@
                         </Button.Style>
                     </Button>
 
-                    <!-- Close Button -->
-                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
-                    Click="CloseButton_Click">
+                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" Click="CloseButton_Click">
                         <TextBlock Text="X" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         <Button.Style>
                             <Style TargetType="Button">
@@ -66,6 +53,7 @@
                 </StackPanel>
             </Grid>
         </Border>
+
 
         <!-- ScrollViewer for Main Content -->
         <ScrollViewer Margin="0,40,0,0">
