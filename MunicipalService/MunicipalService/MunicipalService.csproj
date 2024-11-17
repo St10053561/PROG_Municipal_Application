@@ -84,16 +84,9 @@
     <Compile Include="Classes\ReportGraph.cs" />
     <Compile Include="Classes\ReportStorage.cs" />
     <Compile Include="Classes\StatusToColorConverter.cs" />
-    <Compile Include="DisplayReport.xaml.cs">
-      <DependentUpon>DisplayReport.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ServiceRequestStatusWindow.xaml.cs">
       <DependentUpon>ServiceRequestStatusWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="DisplayReport.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="EventDetailsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

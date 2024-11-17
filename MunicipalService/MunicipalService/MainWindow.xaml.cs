@@ -84,18 +84,6 @@ namespace MunicipalService
             viewReportsWindow.ShowDialog(); // Show the reports window as a dialog
         }
 
-        // Event handler for View Reports button click
-        private void ViewReportsBtn_Click(object sender, RoutedEventArgs e)
-        {
-            //// Get the reports from ReportStorage
-            //List<IssueReport> issueReports = ReportStorage.GetReports();
-
-            //// Create a new window to display the reports
-            DisplayReport displayReport = new DisplayReport();
-            displayReport.Show(); // Show the reports window
-            this.Hide(); // Hide the main window
-        }
-
         // Event handler for Show Events button click
         private void ShowEventsButton_Click(object sender, RoutedEventArgs e)
         {
