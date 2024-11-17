@@ -19,16 +19,22 @@ The Municipal Services Application helps streamline municipal services in South 
 
 ---
 
-## 🚀 Setup and Installation
+## 🚀 Setup and Installation on Github Clone & Manual Download Project
 
-### 1. **Download the Project**
-   - Download the `.zip` file named **`ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_PART 2`** from the specified repository or location.
+### 1. **Clone the GitHub Repository** 
+     - Go to the GitHub repository page: https://github.com/St10053561/PROG_Municipal_Application
+     - Click on the Blue Button called '<> Code'
+     - Click on Download Zip
+     - Extract the 'PROG_Municipal_Application-main.zip'
+  
+### 2. **Download the Project**
+   - Download the `.zip` file named **`ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_PART 3`** from the specified repository or location.
 
-### 2. **Extract the ZIP File**
+### 3. **Extract the ZIP File**
    - Extract the downloaded ZIP to a local folder.
    - Locate the solution file: **`MunicipalService.sln`**.
 
-### 3. **Open in Visual Studio**
+### 4. **Open in Visual Studio**
    - Launch Visual Studio 2022.
    - Go to **File** → **Open** → **Project/Solution**.
    - Navigate to the extracted folder and select **`MunicipalService.sln`**.
