@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 
 namespace MunicipalService.Classes
 {
+    // This class implements a MinHeap specifically for IssueReport objects.
     public class MinHeap
     {
+        // List to store the heap elements
         private List<IssueReport> heap = new List<IssueReport>();
 
+        // Method to insert a new issue report into the heap
         public void Insert(IssueReport report)
         {
             heap.Add(report);
             HeapifyUp(heap.Count - 1);
         }
 
+        // Method to maintain the heap property after insertion
         private void HeapifyUp(int index)
         {
             while (index > 0)
@@ -23,7 +27,7 @@ namespace MunicipalService.Classes
                 int parentIndex = (index - 1) / 2;
                 if (heap[index].Priority >= heap[parentIndex].Priority) break;
 
-                // Swap
+                // Swap the current element with its parent
                 var temp = heap[index];
                 heap[index] = heap[parentIndex];
                 heap[parentIndex] = temp;
@@ -32,6 +36,7 @@ namespace MunicipalService.Classes
             }
         }
 
+        // Method to extract the minimum element (root) from the heap
         public IssueReport ExtractMin()
         {
             if (heap.Count == 0) return null;
@@ -42,6 +47,7 @@ namespace MunicipalService.Classes
             return min;
         }
 
+        // Method to maintain the heap property after extraction
         private void HeapifyDown(int index)
         {
             while (true)
@@ -57,7 +63,7 @@ namespace MunicipalService.Classes
 
                 if (smallestIndex == index) break;
 
-                // Swap
+                // Swap the current element with the smallest child
                 var temp = heap[index];
                 heap[index] = heap[smallestIndex];
                 heap[smallestIndex] = temp;
@@ -66,6 +72,7 @@ namespace MunicipalService.Classes
             }
         }
 
+        // Method to get all issue reports in the heap
         public List<IssueReport> GetAllReports()
         {
             return heap;
