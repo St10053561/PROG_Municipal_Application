@@ -28,6 +28,7 @@ namespace MunicipalService
         private BackgroundWorker backgroundWorker; // BackgroundWorker for handling background tasks
         private MainWindow mainWindow;
         public ObservableCollection<FileItem> Files { get; set; } = new ObservableCollection<FileItem>();
+        ReportGraph reportGraph = new ReportGraph();
 
         private int GetNextReportNumber()
         {
@@ -79,6 +80,9 @@ namespace MunicipalService
                 // Add the new report to the ReportStorage
                 ReportStorage.AddReport(newReport);
                 issueReports.Add(newReport); // Add the new report to the local list
+
+                // Add the new report to the ReportGraph
+                reportGraph.AddReport(newReport.ReportNumber, newReport.Priority); // Add report to graph
 
                 // Save reports to temporary file
                 SaveReportsToTempFile();

@@ -81,6 +81,7 @@
     <Compile Include="Classes\LocationService.cs" />
     <Compile Include="Classes\MinHeap.cs" />
     <Compile Include="Classes\PriorityToImageConverter.cs" />
+    <Compile Include="Classes\ReportGraph.cs" />
     <Compile Include="Classes\ReportStorage.cs" />
     <Compile Include="Classes\StatusToColorConverter.cs" />
     <Compile Include="DisplayReport.xaml.cs">

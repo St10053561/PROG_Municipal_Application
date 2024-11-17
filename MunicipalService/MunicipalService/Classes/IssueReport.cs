@@ -16,6 +16,7 @@ namespace MunicipalService.Classes
         public List<string> Attachments { get; set; } = new List<string>();
         public string Feedback { get; set; }
         public DateTime Date { get; set; }
+        public int Priority { get; set; }
         public string Status
         {
             get
@@ -24,7 +25,6 @@ namespace MunicipalService.Classes
             }
         }
         public List<string> ImagePaths { get; set; } = new List<string>();
-        public int Priority { get; set; }
 
         public IssueReport() { }
     }

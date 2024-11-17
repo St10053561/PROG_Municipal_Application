@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -20,11 +21,21 @@ namespace MunicipalService
         private List<IssueReport> originalReports; // Store the original reports
         private BinarySearchTree bst;
         private MinHeap minHeap;
+        private ReportGraph reportGraph; // Add this line
 
         public ServiceRequestWindow()
         {
             InitializeComponent();
             LoadReports(); // Load reports from the temporary file
+
+            // Initialize the ReportGraph
+            reportGraph = new ReportGraph();
+
+            // Add reports to the ReportGraph
+            foreach (var report in previousReports)
+            {
+                reportGraph.AddReport(report.ReportNumber, report.Priority);
+            }
         }
 
         private void LoadReports()
@@ -186,6 +197,24 @@ namespace MunicipalService
         private void ShowAllReportsButton_Click(object sender, RoutedEventArgs e)
         {
             ShowAllReports(); // Call the method to show all reports
+        }
+
+        private void ShowResolutionTimes()
+        {
+            StringBuilder resolutionInfo = new StringBuilder();
+
+            foreach (var report in previousReports)
+            {
+                int resolutionTime = reportGraph.GetResolutionTime(report.ReportNumber);
+                resolutionInfo.AppendLine($"Report Number: {report.ReportNumber}, Title: {report.Title}, Resolution Time: {resolutionTime} minute(s)");
+            }
+
+            MessageBox.Show(resolutionInfo.ToString(), "Resolution Times", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+
+        private void ShowResolutionTimesButton_Click(object sender, RoutedEventArgs e)
+        {
+            ShowResolutionTimes();
         }
     }
 }
