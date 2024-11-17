@@ -13,7 +13,7 @@
     <Grid Background="LightGray">
 
         <!-- Custom Title Bar -->
-        <Border Background="SteelBlue" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5">
+        <Border Background="SteelBlue" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5" MouseDown="TitleBar_MouseDown">
             <Grid Margin="0,0,0,-2">
                 <!-- Title Text -->
                 <TextBlock Text="Municipal Services Hub" Foreground="White" FontSize="16" 
@@ -197,24 +197,6 @@
                        Foreground="DarkSlateGray" FontSize="14" />
 
             <!-- Upcoming Events Button (Cube Shape) -->
-            <Button x:Name="ShowEventsButton" Width="50" Height="50" Background="#1E88E5" 
-        BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" 
-        VerticalAlignment="Top" Margin="10,100,0,0" Click="ShowEventsButton_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
-                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="📅" Foreground="White" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
-                </StackPanel>
-                <Button.Effect>
-                    <DropShadowEffect ShadowDepth="5" BlurRadius="8" Opacity="0.4" Color="#000000"/>
-                </Button.Effect>
-            </Button>
 
 
             <!-- Pop-up Window for Upcoming Events -->
@@ -270,30 +252,6 @@
                     </StackPanel>
                 </Border>
             </Popup>
-            <Button x:Name="ViewReportsBtn" Content="View Reports" Background="#64B5F6" Foreground="White" FontWeight="Bold"
-                Click="ViewReportsBtn_Click" Margin="10,350,640,10">
-                <Button.Template>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="8">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-                <Button.Style>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="#64B5F6"/>
-                        <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="FontSize" Value="16"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#42A5F5"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-            </Button>
 
         </Grid>
 

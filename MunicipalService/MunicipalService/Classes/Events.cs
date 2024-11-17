@@ -8,6 +8,7 @@ namespace MunicipalService.Classes
 {
     public class Events
     {
+        //These are the Events Declarations
         public string EventName { get; set; }
         public string EventCategory { get; set; }
         public DateTime EventDate { get; set; }
@@ -15,7 +16,10 @@ namespace MunicipalService.Classes
         public string EventDescription { get; set; }
         public string ImagePath { get; set; } // New property for the event image
 
-        // Sample data with event images
+        /// <summary>
+        /// Sample data with event images and Events information
+        /// </summary>
+        /// <returns></returns>
         public static List<Events> GetSampleEvents()
         {
             return new List<Events>
@@ -63,7 +67,11 @@ namespace MunicipalService.Classes
                     };
         }
 
-        // Method to get recommended events based on category
+        /// <summary>
+        /// It is a Method to get recommended events based on category
+        /// </summary>
+        /// <param name="category"></param>
+        /// <returns></returns>
         public static List<Events> GetRecommendedEventsByCategory(string category)
         {
             var recommendedEvents = new List<Events>();
@@ -223,6 +231,10 @@ namespace MunicipalService.Classes
             return recommendedEvents;
         }
 
+        /// <summary>
+        /// Format of the Event Information
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{EventName} - {EventCategory} - {EventDate.ToShortDateString()}";
