@@ -6,15 +6,21 @@
         xmlns:local="clr-namespace:MunicipalService"
         xmlns:classes="clr-namespace:MunicipalService.Classes"
         mc:Ignorable="d"
-        Title="Report an Issue" Height="525" Width="445" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Report an Issue" Height="525" Width="445" ResizeMode="CanResize" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Window.Resources>
         <!-- Define the BooleanToVisibilityConverter resource -->
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-
         <!-- Define the InverseBooleanToVisibilityConverter resource -->
         <classes:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
     </Window.Resources>
     <Grid Background="#F0F0F0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Title Bar -->
+            <RowDefinition Height="*"/>
+            <!-- Main Content -->
+        </Grid.RowDefinitions>
+
         <!-- Custom Title Bar -->
         <Border Background="SteelBlue" Height="40" VerticalAlignment="Top" CornerRadius="0,0,5,5">
             <Grid>
@@ -60,31 +66,48 @@
         </Border>
 
         <!-- Main Content with ScrollViewer -->
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,40,0,0">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="0,10,0,0">
             <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <!-- Title -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Location Input -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Category Selection -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Problem Description -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Priority Checkbox -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Media Attachment -->
+                    <RowDefinition Height="*"/>
+                    <!-- ItemsControl and Progress Bar -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Buttons Section -->
+                </Grid.RowDefinitions>
+
                 <!-- Title -->
                 <Label Content="Report an Issue" HorizontalAlignment="Center" VerticalAlignment="Top" 
-                   FontFamily="Bahnschrift SemiCondensed" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+                   FontFamily="Bahnschrift SemiCondensed" FontSize="24" FontWeight="Bold" Margin="0,10,0,0" Grid.Row="0"/>
 
                 <!-- Location Input -->
                 <Label Content="Location" HorizontalAlignment="Left" VerticalAlignment="Top" 
-       FontFamily="Microsoft Tai Le" Margin="0,80,0,0" FontSize="18"/>
-                <Grid>
-                    <TextBox x:Name="LocationTxtbx" HorizontalAlignment="Left" Margin="140,75,0,0" VerticalAlignment="Top" 
-             Width="250" Height="30" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1"
-             TextChanged="LocationTxtbx_TextChanged"/>
-                    <Popup x:Name="LocationPopup" PlacementTarget="{Binding ElementName=LocationTxtbx}" 
-           Placement="Bottom" Width="250" Height="200" Visibility="Collapsed">
-                        <ListBox x:Name="LocationListBox" ItemsSource="{Binding}" 
-                 SelectionChanged="LocationListBox_SelectionChanged" />
-                    </Popup>
-                </Grid>
+       FontFamily="Microsoft Tai Le" Margin="10,10,0,0" FontSize="18" Grid.Row="1"/>
+                <TextBox x:Name="LocationTxtbx" HorizontalAlignment="Stretch" Margin="140,10,10,0" VerticalAlignment="Top" 
+         Height="30" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1"
+         TextChanged="LocationTxtbx_TextChanged" Grid.Row="1"/>
+                <Popup x:Name="LocationPopup" PlacementTarget="{Binding ElementName=LocationTxtbx}" 
+       Placement="Bottom" Width="250" Height="200" Visibility="Collapsed" Grid.Row="1">
+                    <ListBox x:Name="LocationListBox" ItemsSource="{Binding}" 
+             SelectionChanged="LocationListBox_SelectionChanged" />
+                </Popup>
 
                 <!-- Category Selection -->
                 <Label Content="Category" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                   FontFamily="Microsoft Tai Le" Margin="0,130,0,0" FontSize="18"/>
-                <ComboBox x:Name="CategoryComboBx" HorizontalAlignment="Left" Margin="140,130,0,0" VerticalAlignment="Top" 
-                      Width="250" Height="30" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1">
+       FontFamily="Microsoft Tai Le" Margin="10,10,0,0" FontSize="18" Grid.Row="2"/>
+                <ComboBox x:Name="CategoryComboBx" HorizontalAlignment="Stretch" Margin="140,10,10,0" VerticalAlignment="Top" 
+          Height="30" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1" Grid.Row="2">
                     <ComboBoxItem Content="Sanitation"/>
                     <ComboBoxItem Content="Roads"/>
                     <ComboBoxItem Content="Utilities"/>
@@ -93,9 +116,9 @@
 
                 <!-- Problem Description -->
                 <Label Content="Description" HorizontalAlignment="Left" VerticalAlignment="Top" 
-       FontFamily="Microsoft Tai Le" Margin="0,180,0,0" FontSize="18"/>
-                <RichTextBox x:Name="DescriptionRichTxtbox" HorizontalAlignment="Left" Margin="140,180,0,0" 
-             VerticalAlignment="Top" Width="250" Height="80" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1">
+       FontFamily="Microsoft Tai Le" Margin="10,10,0,0" FontSize="18" Grid.Row="3"/>
+                <RichTextBox x:Name="DescriptionRichTxtbox" HorizontalAlignment="Stretch" Margin="140,10,10,0" 
+             VerticalAlignment="Top" Height="80" Padding="5" FontSize="14" BorderBrush="Gray" BorderThickness="1" Grid.Row="3">
                     <FlowDocument>
                         <Paragraph/>
                     </FlowDocument>
@@ -103,14 +126,14 @@
 
                 <!-- Priority Checkbox -->
                 <CheckBox x:Name="PriorityCheckBox" Content="Mark as Priority" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                    FontFamily="Microsoft Tai Le" Margin="145,326,0,0" FontSize="16"/>
+          FontFamily="Microsoft Tai Le" Margin="10,10,0,0" FontSize="16" Grid.Row="4"/>
 
                 <!-- Media Attachment -->
                 <Label Content="Attach Media" HorizontalAlignment="Left" VerticalAlignment="Top" 
-                   FontFamily="Microsoft Tai Le" Margin="0,280,0,0" FontSize="18"/>
-                <Button x:Name="MediaAttachBtn" Content="Upload File" HorizontalAlignment="Left" Margin="140,280,0,0" 
-                    VerticalAlignment="Top" Width="240" Height="30" Background="#4CAF50" Foreground="White" FontWeight="Bold" 
-                    Click="MediaAttachBtn_Click">
+       FontFamily="Microsoft Tai Le" Margin="10,10,0,0" FontSize="18" Grid.Row="5"/>
+                <Button x:Name="MediaAttachBtn" Content="Upload File" HorizontalAlignment="Stretch" Margin="140,10,10,0" 
+        VerticalAlignment="Top" Height="30" Background="#4CAF50" Foreground="White" FontWeight="Bold" 
+        Click="MediaAttachBtn_Click" Grid.Row="5">
                     <Button.Template>
                         <ControlTemplate TargetType="Button">
                             <Border Background="{TemplateBinding Background}" CornerRadius="5">
@@ -131,13 +154,13 @@
                         </Style>
                     </Button.Style>
                 </Button>
-                <Label x:Name="lblFileName" Content="" HorizontalAlignment="Left" Margin="132,310,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="lblFileName" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.Row="5"/>
 
-                <!-- ScrollViewer for ItemsControl and Buttons Section -->
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,345,3,5">
+                <!-- ItemsControl and Progress Bar Section -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="5,10,3,5" Grid.Row="6">
                     <StackPanel>
                         <!-- ItemsControl for displaying images and documents -->
-                        <ItemsControl x:Name="FilesItemsControl" HorizontalAlignment="Left" Margin="140,0,0,0" VerticalAlignment="Top" Width="250">
+                        <ItemsControl x:Name="FilesItemsControl" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="140,0,10,0">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel Orientation="Vertical"/>
@@ -153,9 +176,12 @@
                                                 <RowDefinition Height="Auto"/>
                                             </Grid.RowDefinitions>
                                             <TextBlock Text="{Binding FileName}" FontWeight="Bold" Margin="5" Grid.Row="0"/>
-                                            <Image Source="{Binding FilePath}" Width="120" Height="120" Stretch="Uniform" Margin="5" Grid.Row="1" Visibility="{Binding IsImage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
-                                            <Image Source="{Binding FileIconPath}" Width="120" Height="120" Stretch="Uniform" Margin="5" Grid.Row="1" Visibility="{Binding IsImage, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
-                                            <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Right" Margin="5" Grid.Row="2" Click="DeleteButton_Click">
+                                            <Image Source="{Binding FilePath}" Width="120" Height="120" Stretch="Uniform" Margin="5" Grid.Row="1" 
+                                   Visibility="{Binding IsImage, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                            <Image Source="{Binding FileIconPath}" Width="120" Height="120" Stretch="Uniform" Margin="5" Grid.Row="1" 
+                                   Visibility="{Binding IsImage, Converter={StaticResource InverseBooleanToVisibilityConverter}}"/>
+                                            <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Right" Margin="5" Grid.Row="2" 
+                                    Click="DeleteButton_Click">
                                                 <Button.Template>
                                                     <ControlTemplate TargetType="Button">
                                                         <Border Background="Red" CornerRadius="5">
@@ -171,12 +197,12 @@
                         </ItemsControl>
 
                         <!-- Progress Bar -->
-                        <ProgressBar x:Name="progressBar" HorizontalAlignment="Left" Height="25" Margin="140,60,0,0" VerticalAlignment="Top" Width="250"/>
+                        <ProgressBar x:Name="progressBar" HorizontalAlignment="Stretch" Height="25" Margin="140,10,10,0" VerticalAlignment="Top" />
 
                         <!-- Buttons Section -->
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,50,10,0" Width="279" Height="35">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,10,0" Width="279" Height="35">
                             <Button x:Name="BackToMainMenuBtn" Content="Back to Menu" Width="120" Height="35" Margin="0,0,10,0" 
-        Background="#64B5F6" Foreground="White" FontWeight="Bold" Click="BackToMainMenuBtn_Click">
+                                Background="#64B5F6" Foreground="White" FontWeight="Bold" Click="BackToMainMenuBtn_Click">
                                 <Button.Template>
                                     <ControlTemplate TargetType="Button">
                                         <Border Background="{TemplateBinding Background}" CornerRadius="5">
