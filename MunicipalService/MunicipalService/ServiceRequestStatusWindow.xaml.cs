@@ -18,15 +18,18 @@ namespace MunicipalService
     /// </summary>
     public partial class ServiceRequestWindow : Window
     {
-        private List<IssueReport> previousReports;
-        private List<IssueReport> originalReports; // Store the original reports
-        private BinarySearchTree bst;
-        private MinHeap minHeap;
-        private ReportGraph reportGraph; // Add this line
+        private List<IssueReport> previousReports; // List to store previous issue reports
+        private List<IssueReport> originalReports; // List to store the original reports
+        private BinarySearchTree bst; // Binary search tree for issue reports
+        private MinHeap minHeap; // Min-heap for issue reports
+        private ReportGraph reportGraph; // Graph structure for issue reports
 
+        /// <summary>
+        /// it initializes a new instance of the <see cref="ServiceRequestWindow"/> class.
+        /// </summary>
         public ServiceRequestWindow()
         {
-            InitializeComponent();
+            InitializeComponent(); // Initialize the components
             LoadReports(); // Load reports from the temporary file
 
             // Initialize the ReportGraph
@@ -35,56 +38,69 @@ namespace MunicipalService
             // Add reports to the ReportGraph
             foreach (var report in previousReports)
             {
-                reportGraph.AddReport(report.ReportNumber, report.Priority);
+                reportGraph.AddReport(report.ReportNumber, report.Priority); // Add each report to the graph
             }
 
             // Initialize the timer for current time
             WeatherAndTimeUtility.InitializeTimer(CurrentTimeTextBlock); // Start the timer to update current time
 
             // Fetch and display current weather data
-            WeatherAndTimeUtility.FetchWeatherData(CurrentTemperatureTextBlock);
+            WeatherAndTimeUtility.FetchWeatherData(CurrentTemperatureTextBlock); // Fetch and display weather data
         }
 
+        /// <summary>
+        /// It loads a Reports from the  file.
+        /// </summary>
         private void LoadReports()
         {
-            if (File.Exists(FormReportIssues.TempFilePath))
+            if (File.Exists(FormReportIssues.TempFilePath)) // Check if the temporary file exists
             {
-                var json = File.ReadAllText(FormReportIssues.TempFilePath);
-                previousReports = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>();
+                var json = File.ReadAllText(FormReportIssues.TempFilePath); // Read the JSON content from the file
+                previousReports = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>(); // Deserialize the JSON content to a list of IssueReport
                 originalReports = new List<IssueReport>(previousReports); // Store the original reports
 
                 // Initialize BST and MinHeap
-                bst = new BinarySearchTree();
-                minHeap = new MinHeap();
+                bst = new BinarySearchTree(); // Initialize the binary search tree
+                minHeap = new MinHeap(); // Initialize the min-heap
 
                 // Add reports to BST and MinHeap
                 for (int i = 0; i < previousReports.Count; i++)
                 {
-                    previousReports[i].ReportNumber = i + 1;
-                    bst.Insert(previousReports[i]);
-                    minHeap.Insert(previousReports[i]);
+                    previousReports[i].ReportNumber = i + 1; // Assign report numbers
+                    bst.Insert(previousReports[i]); // Insert report into BST
+                    minHeap.Insert(previousReports[i]); // Insert report into MinHeap
                 }
 
                 // Set the ItemsSource of the ReportsListBox
-                ReportsListBox.ItemsSource = previousReports;
-                ReportsListBox.SelectionChanged += ReportsListBox_SelectionChanged;
+                ReportsListBox.ItemsSource = previousReports; // Bind the list of reports to the ListBox
+                ReportsListBox.SelectionChanged += ReportsListBox_SelectionChanged; // Attach the selection changed event handler
             }
         }
 
+        /// <summary>
+        /// this is the event handler for the CloseDetailsButton Click event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseDetailsButton_Click(object sender, RoutedEventArgs e)
         {
             ReportDetailsBorder.Visibility = Visibility.Collapsed; // Hide the report details
             ReportsListBox.SelectedItem = null; // Reset the selection to trigger the SelectionChanged event
         }
 
+        /// <summary>
+        /// This is the event handler for the ReportsListBox SelectionChanged event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ReportsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (ReportsListBox.SelectedItem != null)
+            if (ReportsListBox.SelectedItem != null) // Check if an item is selected
             {
-                IssueReport selectedReport = (IssueReport)ReportsListBox.SelectedItem;
-                ReportTitleTextBlock.Text = selectedReport.Category.ToString();
-                ReportDateTextBlock.Text = selectedReport.Date.ToString("MM/dd/yyyy");
-                ReportStatusTextBlock.Text = selectedReport.Status;
+                IssueReport selectedReport = (IssueReport)ReportsListBox.SelectedItem; // Get the selected report
+                ReportTitleTextBlock.Text = selectedReport.Category.ToString(); // Display the report category
+                ReportDateTextBlock.Text = selectedReport.Date.ToString("MM/dd/yyyy"); // Display the report date
+                ReportStatusTextBlock.Text = selectedReport.Status; // Display the report status
 
                 // Convert file paths to FileItem objects
                 List<FileItem> fileItems = new List<FileItem>();
@@ -92,13 +108,13 @@ namespace MunicipalService
                 {
                     fileItems.Add(new FileItem
                     {
-                        FilePath = filePath,
-                        FileName = System.IO.Path.GetFileName(filePath),
-                        IsImage = filePath.EndsWith(".jpg") || filePath.EndsWith(".jpeg") || filePath.EndsWith(".png"),
+                        FilePath = filePath, // Set the file path
+                        FileName = System.IO.Path.GetFileName(filePath), // Set the file name
+                        IsImage = filePath.EndsWith(".jpg") || filePath.EndsWith(".jpeg") || filePath.EndsWith(".png"), // Check if the file is an image
                     });
                 }
 
-                FilesListBox.ItemsSource = fileItems;
+                FilesListBox.ItemsSource = fileItems; // Bind the list of file items to the ListBox
 
                 // Update the FileListBox to display the file icons
                 foreach (var fileItem in fileItems)
@@ -107,12 +123,12 @@ namespace MunicipalService
                     if (listBoxItem != null)
                     {
                         var image = new Image();
-                        image.Source = new BitmapImage(new Uri(fileItem.FileIconPath, UriKind.Relative));
-                        listBoxItem.Content = image;
+                        image.Source = new BitmapImage(new Uri(fileItem.FileIconPath, UriKind.Relative)); // Set the image source
+                        listBoxItem.Content = image; // Set the content of the ListBoxItem to the image
                     }
                 }
 
-                ReportDetailsBorder.Visibility = Visibility.Visible;
+                ReportDetailsBorder.Visibility = Visibility.Visible; // Show the report details
             }
             else
             {
@@ -122,32 +138,31 @@ namespace MunicipalService
 
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            this.WindowState = WindowState.Minimized; // Minimize the window
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            this.Hide(); // Hide the window
         }
 
         private void SearchTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (SearchTextBox.Text == "Enter Report Number")
+            if (SearchTextBox.Text == "Enter Report Number") // Check if the default text is present
             {
-                SearchTextBox.Text = "";
-                SearchTextBox.Foreground = new SolidColorBrush(Colors.Black);
+                SearchTextBox.Text = ""; // Clear the text
+                SearchTextBox.Foreground = new SolidColorBrush(Colors.Black); // Change the text color to black
             }
         }
 
         private void SearchTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(SearchTextBox.Text))
+            if (string.IsNullOrWhiteSpace(SearchTextBox.Text)) // Check if the text is empty or whitespace
             {
-                SearchTextBox.Text = "Enter Report Number";
-                SearchTextBox.Foreground = new SolidColorBrush(Colors.Gray);
+                SearchTextBox.Text = "Enter Report Number"; // Reset the default text
+                SearchTextBox.Foreground = new SolidColorBrush(Colors.Gray); // Change the text color to gray
             }
         }
-
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -155,49 +170,49 @@ namespace MunicipalService
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 // Capture the mouse and move the window
-                this.DragMove();
+                this.DragMove(); // Allow the window to be dragged
             }
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
             int reportNumber;
-            if (int.TryParse(SearchTextBox.Text, out reportNumber))
+            if (int.TryParse(SearchTextBox.Text, out reportNumber)) // Try to parse the report number
             {
-                var report = bst.Search(reportNumber);
+                var report = bst.Search(reportNumber); // Search for the report in the BST
                 if (report != null)
                 {
-                    ReportsListBox.SelectedItem = report;
+                    ReportsListBox.SelectedItem = report; // Select the found report
                 }
                 else
                 {
-                    MessageBox.Show("Report not found.");
+                    MessageBox.Show("Report not found."); // Show a message if the report is not found
                 }
             }
             else
             {
-                MessageBox.Show("Please enter a valid report number.");
+                MessageBox.Show("Please enter a valid report number."); // Show a message if the input is not valid
             }
         }
 
         private void ShowHighPriorityReportsButton_Click(object sender, RoutedEventArgs e)
         {
             // Filter high-priority reports
-            var highPriorityReports = originalReports.Where(report => report.Priority == 1).ToList();
+            var highPriorityReports = originalReports.Where(report => report.Priority == 1).ToList(); // Get high-priority reports
 
             // Set the ItemsSource of the ReportsListBox to the high-priority reports
-            ReportsListBox.ItemsSource = highPriorityReports;
+            ReportsListBox.ItemsSource = highPriorityReports; // Bind the high-priority reports to the ListBox
 
             // Clear selection to avoid showing details
-            ReportsListBox.SelectedItem = null;
+            ReportsListBox.SelectedItem = null; // Clear the selected report
 
             // Hide the report details
-            ReportDetailsBorder.Visibility = Visibility.Collapsed;
+            ReportDetailsBorder.Visibility = Visibility.Collapsed; // Hide the report details
 
             // Notify the user if no high-priority reports are found
             if (highPriorityReports.Count == 0)
             {
-                MessageBox.Show("No high-priority reports found.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("No high-priority reports found.", "Information", MessageBoxButton.OK, MessageBoxImage.Information); // Show a message if no high-priority reports are found
             }
         }
 
@@ -210,20 +225,20 @@ namespace MunicipalService
 
         private void ShowResolutionTimes()
         {
-            StringBuilder resolutionInfo = new StringBuilder();
+            StringBuilder resolutionInfo = new StringBuilder(); // Create a StringBuilder to store resolution information
 
             foreach (var report in previousReports)
             {
-                int resolutionTime = reportGraph.GetResolutionTime(report.ReportNumber);
-                resolutionInfo.AppendLine($"Report Number: {report.ReportNumber}, Title: {report.Title}, Resolution Time: {resolutionTime} minute(s)");
+                int resolutionTime = reportGraph.GetResolutionTime(report.ReportNumber); // Get the resolution time for each report
+                resolutionInfo.AppendLine($"Report Number: {report.ReportNumber}, Title: {report.Title}, Resolution Time: {resolutionTime} minute(s)"); // Append the resolution information
             }
 
-            MessageBox.Show(resolutionInfo.ToString(), "Resolution Times", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(resolutionInfo.ToString(), "Resolution Times", MessageBoxButton.OK, MessageBoxImage.Information); // Show the resolution information
         }
 
         private void ShowResolutionTimesButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowResolutionTimes();
+            ShowResolutionTimes(); // Show the resolution times when the button is clicked
         }
     }
 }

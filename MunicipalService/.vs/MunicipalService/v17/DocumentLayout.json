@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\vicky\\OneDrive - ADvTECH Ltd\\Varsity college\\Third Year\\Second Semester\\PROG7312\\POE\\POE\\PROG_Municipal_Application\\MunicipalService\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{12FA7631-59FE-493A-BD92-8A3D04764E61}|MunicipalService\\MunicipalService.csproj|c:\\users\\vicky\\onedrive - advtech ltd\\varsity college\\third year\\second semester\\prog7312\\poe\\poe\\prog_municipal_application\\municipalservice\\municipalservice\\formreportissues.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12FA7631-59FE-493A-BD92-8A3D04764E61}|MunicipalService\\MunicipalService.csproj|solutionrelative:municipalservice\\formreportissues.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{12FA7631-59FE-493A-BD92-8A3D04764E61}|MunicipalService\\MunicipalService.csproj|c:\\users\\vicky\\onedrive - advtech ltd\\varsity college\\third year\\second semester\\prog7312\\poe\\poe\\prog_municipal_application\\municipalservice\\municipalservice\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{12FA7631-59FE-493A-BD92-8A3D04764E61}|MunicipalService\\MunicipalService.csproj|solutionrelative:municipalservice\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{12FA7631-59FE-493A-BD92-8A3D04764E61}|MunicipalService\\MunicipalService.csproj|c:\\users\\vicky\\onedrive - advtech ltd\\varsity college\\third year\\second semester\\prog7312\\poe\\poe\\prog_municipal_application\\municipalservice\\municipalservice\\servicerequeststatuswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{12FA7631-59FE-493A-BD92-8A3D04764E61}|MunicipalService\\MunicipalService.csproj|solutionrelative:municipalservice\\servicerequeststatuswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -303,12 +311,38 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "FormReportIssues.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vicky\\OneDrive - ADvTECH Ltd\\Varsity college\\Third Year\\Second Semester\\PROG7312\\POE\\POE\\PROG_Municipal_Application\\MunicipalService\\MunicipalService\\FormReportIssues.xaml.cs",
+              "RelativeDocumentMoniker": "MunicipalService\\FormReportIssues.xaml.cs",
+              "ToolTip": "C:\\Users\\vicky\\OneDrive - ADvTECH Ltd\\Varsity college\\Third Year\\Second Semester\\PROG7312\\POE\\POE\\PROG_Municipal_Application\\MunicipalService\\MunicipalService\\FormReportIssues.xaml.cs",
+              "RelativeToolTip": "MunicipalService\\FormReportIssues.xaml.cs",
+              "ViewState": "AgIAAO0AAAAAAAAAAAAAAPkAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T19:40:16.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\vicky\\OneDrive - ADvTECH Ltd\\Varsity college\\Third Year\\Second Semester\\PROG7312\\POE\\POE\\PROG_Municipal_Application\\MunicipalService\\MunicipalService\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MunicipalService\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\vicky\\OneDrive - ADvTECH Ltd\\Varsity college\\Third Year\\Second Semester\\PROG7312\\POE\\POE\\PROG_Municipal_Application\\MunicipalService\\MunicipalService\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MunicipalService\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAGYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-17T19:38:29.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ServiceRequestStatusWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\vicky\\OneDrive - ADvTECH Ltd\\Varsity college\\Third Year\\Second Semester\\PROG7312\\POE\\POE\\PROG_Municipal_Application\\MunicipalService\\MunicipalService\\ServiceRequestStatusWindow.xaml.cs",
               "RelativeDocumentMoniker": "MunicipalService\\ServiceRequestStatusWindow.xaml.cs",
               "ToolTip": "C:\\Users\\vicky\\OneDrive - ADvTECH Ltd\\Varsity college\\Third Year\\Second Semester\\PROG7312\\POE\\POE\\PROG_Municipal_Application\\MunicipalService\\MunicipalService\\ServiceRequestStatusWindow.xaml.cs",
               "RelativeToolTip": "MunicipalService\\ServiceRequestStatusWindow.xaml.cs",
-              "ViewState": "AgIAALQAAAAAAAAAAAAAANAAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAFsAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-17T18:37:16.193Z",
               "EditorCaption": ""

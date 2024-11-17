@@ -197,24 +197,6 @@
                        Foreground="DarkSlateGray" FontSize="14" />
 
             <!-- Upcoming Events Button (Cube Shape) -->
-            <Button x:Name="ShowEventsButton" Width="50" Height="50" Background="#1E88E5" 
-        BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Left" 
-        VerticalAlignment="Top" Margin="10,100,0,0" Click="ShowEventsButton_Click">
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" 
-                    BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="25">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="📅" Foreground="White" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
-                </StackPanel>
-                <Button.Effect>
-                    <DropShadowEffect ShadowDepth="5" BlurRadius="8" Opacity="0.4" Color="#000000"/>
-                </Button.Effect>
-            </Button>
 
 
             <!-- Pop-up Window for Upcoming Events -->
