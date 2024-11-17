@@ -201,20 +201,11 @@ namespace MunicipalService
             }
         }
 
-        private void ShowAllReports()
-        {
-            ReportsListBox.ItemsSource = originalReports; // Reset to the original list of reports
-
-            // Automatically select the first item if there are any reports
-            if (originalReports.Count > 0)
-            {
-                ReportsListBox.SelectedIndex = 0; // Select the first report
-            }
-        }
-
         private void ShowAllReportsButton_Click(object sender, RoutedEventArgs e)
         {
-            ShowAllReports(); // Call the method to show all reports
+            ReportsListBox.ItemsSource = originalReports; // Reset to the original list of reports
+            ReportsListBox.SelectedItem = null; // Clear the selected report
+            ReportDetailsBorder.Visibility = Visibility.Collapsed; // Hide the report details
         }
 
         private void ShowResolutionTimes()
