@@ -91,6 +91,27 @@ The Municipal Services Application helps streamline municipal services in South 
 
 ---
 
+📊 Implementation Data Structure Report on Service Status
+1. **ObservableCollection<IssueReport>**
+
+Role: This collection is used to store the reports that have been submitted by users. It allows for dynamic resizing and provides notifications to the UI when items are added or removed.
+Contribution to Efficiency: The ObservableCollection facilitates data binding with the WPF ListBox, ensuring that any changes in the collection are automatically reflected in the UI. This is crucial for the "Service Request Status" feature, as users need to see real-time updates on their reports.
+
+2. **BinarySearchTree (BST)**
+
+Role: The BST is used to store issue reports in a structured manner, allowing for efficient searching based on report numbers.
+Contribution to Efficiency: The BST enables O(log n) time complexity for search operations. This is particularly beneficial when a user searches for a report by its number, allowing for quick retrieval of the report details without scanning through the entire list.
+
+3. **MinHeap**
+
+Role: The MinHeap is utilized to manage issue reports based on their priority, allowing for efficient retrieval of the highest priority reports.
+Contribution to Efficiency: The MinHeap provides O(log n) time complexity for insertions and O(1) for accessing the minimum element. This is essential for the "Service Request Status" feature, as it allows the application to quickly identify and display high-priority reports to users.
+
+4. **ReportGraph**
+
+Role: The ReportGraph manages the relationships and dependencies between different issue reports, allowing for a more comprehensive view of how reports may be interconnected.
+Contribution to Efficiency: By using a graph structure, the application can efficiently track dependencies and resolution times for reports. This is particularly useful for understanding the impact of one report on another and for optimizing the resolution process based on priority and dependencies.
+
 ## 📝 Features Implemented
 
 - **Main Menu**: Easy navigation between sections.
