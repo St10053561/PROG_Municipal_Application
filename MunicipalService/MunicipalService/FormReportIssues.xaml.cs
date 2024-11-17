@@ -321,7 +321,7 @@ namespace MunicipalService
                 var reports = JsonConvert.DeserializeObject<List<IssueReport>>(json) ?? new List<IssueReport>();
 
                 // Remove reports older than 7 days
-                reports.RemoveAll(report => (DateTime.Now - report.Date).TotalDays > 7);
+                reports.RemoveAll(report => (DateTime.Now - report.Date).TotalDays > 2);
 
                 // Save the remaining reports back to the file
                 var updatedJson = JsonConvert.SerializeObject(reports);

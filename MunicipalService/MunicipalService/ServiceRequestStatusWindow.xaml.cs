@@ -37,6 +37,12 @@ namespace MunicipalService
             {
                 reportGraph.AddReport(report.ReportNumber, report.Priority);
             }
+
+            // Initialize the timer for current time
+            WeatherAndTimeUtility.InitializeTimer(CurrentTimeTextBlock); // Start the timer to update current time
+
+            // Fetch and display current weather data
+            WeatherAndTimeUtility.FetchWeatherData(CurrentTemperatureTextBlock);
         }
 
         private void LoadReports()

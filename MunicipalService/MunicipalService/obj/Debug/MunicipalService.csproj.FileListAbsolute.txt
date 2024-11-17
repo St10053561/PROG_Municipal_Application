@@ -131,7 +131,5 @@ C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester
 C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester\PROG7312\POE\POE\PROG_Municipal_Application\MunicipalService\MunicipalService\obj\Debug\Municipa.C00417E0.Up2Date
 C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester\PROG7312\POE\POE\PROG_Municipal_Application\MunicipalService\MunicipalService\obj\Debug\MunicipalService.exe
 C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester\PROG7312\POE\POE\PROG_Municipal_Application\MunicipalService\MunicipalService\obj\Debug\MunicipalService.pdb
-C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester\PROG7312\POE\POE\PROG_Municipal_Application\MunicipalService\MunicipalService\obj\Debug\DisplayReport.g.cs
 C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester\PROG7312\POE\POE\PROG_Municipal_Application\MunicipalService\MunicipalService\obj\Debug\ServiceRequestStatusWindow.g.cs
-C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester\PROG7312\POE\POE\PROG_Municipal_Application\MunicipalService\MunicipalService\obj\Debug\DisplayReport.baml
 C:\Users\vicky\OneDrive - ADvTECH Ltd\Varsity college\Third Year\Second Semester\PROG7312\POE\POE\PROG_Municipal_Application\MunicipalService\MunicipalService\obj\Debug\ServiceRequestStatusWindow.baml

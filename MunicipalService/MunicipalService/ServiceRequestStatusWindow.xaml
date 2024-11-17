@@ -20,22 +20,31 @@
         </Grid.RowDefinitions>
 
         <!-- Top Bar -->
-        <Border Background="SteelBlue" Height="40" VerticalAlignment="Center" CornerRadius="0,0,5,5" MouseDown="TitleBar_MouseDown">
-            <Grid>
-                <TextBlock Text="Municipal Service View Reports Hub" Foreground="White" FontSize="16"
-                           FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
-                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
-                            Click="MinimizeButton_Click">
-                        <TextBlock Text="_" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-                    <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
-                            Click="CloseButton_Click">
-                        <TextBlock Text="X" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Button>
-                </StackPanel>
-            </Grid>
-        </Border>
+<Border Background="SteelBlue" Height="40" VerticalAlignment="Center" CornerRadius="0,0,5,5" MouseDown="TitleBar_MouseDown">
+    <Grid>
+        <TextBlock Text="Service Request Hub" Foreground="White" FontSize="16"
+                   FontWeight="Bold" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        
+        <!-- Current Time and Day -->
+        <TextBlock x:Name="CurrentTimeTextBlock" Foreground="White" FontSize="16" 
+                   VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,90,0"/>
+
+        <!-- Current Temperature -->
+        <TextBlock x:Name="CurrentTemperatureTextBlock" Foreground="White" FontSize="16" 
+                   VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,110,0"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+            <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
+                    Click="MinimizeButton_Click">
+                <TextBlock Text="_" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+            <Button Width="30" Height="30" Padding="0" BorderThickness="0" Background="Transparent" 
+                    Click="CloseButton_Click">
+                <TextBlock Text="X" Foreground="White" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Border>
 
         <!-- Header Section -->
         <Border CornerRadius="5" Margin="15" Padding="20" Background="#3E4A59" Grid.Row="1">
