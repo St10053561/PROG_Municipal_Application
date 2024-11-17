@@ -60,8 +60,6 @@ The Municipal Services Application helps streamline municipal services in South 
      - **Local Events and Announcements** (enabled): View and search for local events.
      - **Service Request Status** (disabled).
 
----
-
 ## 🛠️ How to Use the Application
 
 ### **Main Menu**
@@ -92,25 +90,22 @@ The Municipal Services Application helps streamline municipal services in South 
 ---
 
 📊 Implementation Data Structure Report on Service Status
-1. **ObservableCollection<IssueReport>**
 
-Role: This collection is used to store the reports that have been submitted by users. It allows for dynamic resizing and provides notifications to the UI when items are added or removed.
-Contribution to Efficiency: The ObservableCollection facilitates data binding with the WPF ListBox, ensuring that any changes in the collection are automatically reflected in the UI. This is crucial for the "Service Request Status" feature, as users need to see real-time updates on their reports.
+1. **ObservableCollection<IssueReport>**
+ - Role: This Collection is designed for the purpose of saving users' submitted reports. It enables expansion and contraction of its size. And it is effiency whenever there is an item added or removed. 
+ - Contribution to Efficiency: The ObservableCollection allows the ListBox in WPF to bind data, such that when there are changes in the collection, it reflects the changes in the user interface. This is important for the functionality called "Service Request Status" since the user must be able to view the reports they have submitted immediately after any change is made on them. It also shows the not only the list of reports but also the prority or non-prority reports to differentate on report prorities. It also makes easier to show the information for report detailing.
 
 2. **BinarySearchTree (BST)**
-
-Role: The BST is used to store issue reports in a structured manner, allowing for efficient searching based on report numbers.
-Contribution to Efficiency: The BST enables O(log n) time complexity for search operations. This is particularly beneficial when a user searches for a report by its number, allowing for quick retrieval of the report details without scanning through the entire list.
+ - Role: The Binary Search Tree is intended to organize issue reports in a coherent manner, which supports efficient searching based on report numbers.
+ - Contribution to Efficiency: The BST allows for search operations to be implemented with O(log n) time complexity. This is especially advantageous in cases when a user requests a report by its number since details of the report can be accessed fast without going through all the reports in the list. this makes faster search on that tons of report also it shows the pop up information on that report number that user searched.
 
 3. **MinHeap**
+ - Role: The application uses a MinHeap data organization structure to keep issue reports in a hierarchy from the one with the least level of severity to the highest. The structure allows for quick retrieval of the most severe (high priority) reports so that urgent issues can be addressed without delays.
+ - Contribution to Efficiency: The MinHeap guarantees that any new report can be inserted in O(log n) time, which implies that the addition of a new report becomes efficient, even when the number of reports increases. Furthermore, the minimum element (which is usually the highest priority report) can also be accessed in O(1) time indicating that it can be accessed at once. This kind of efficiency is very important in regard to the “Service Request Status” option because it allows the software to quickly load the most relevant reports for the user and help them in responding to burning issues more readily, especially those pertaining to the city council.
 
-Role: The MinHeap is utilized to manage issue reports based on their priority, allowing for efficient retrieval of the highest priority reports.
-Contribution to Efficiency: The MinHeap provides O(log n) time complexity for insertions and O(1) for accessing the minimum element. This is essential for the "Service Request Status" feature, as it allows the application to quickly identify and display high-priority reports to users.
-
-4. **ReportGraph**
-
-Role: The ReportGraph manages the relationships and dependencies between different issue reports, allowing for a more comprehensive view of how reports may be interconnected.
-Contribution to Efficiency: By using a graph structure, the application can efficiently track dependencies and resolution times for reports. This is particularly useful for understanding the impact of one report on another and for optimizing the resolution process based on priority and dependencies.
+4. **Graph**
+ - Role: The primary purpose of the ReportGraph is to assist in understanding the various relationships existing between a set of issue reports. Picture it like a network where one issue report can be based on another. This way, when a new issue is reported, the application checks for interrelations between the new issue and the existing ones and helps organize workloads easily.
+ - Contribution to Efficiency: Having an idea of these relationships allows the application to assess how many days it would take to resolve every report which would also depend on its significance. For instance, if report A is critical, and report B is critical for C which is dependent on report A, then the critical report A can be worked on first. This is important so that all the critical issues are raised and dealt with in a timely manner enhancing the efficiency of the entire system.
 
 ## 📝 Features Implemented
 
