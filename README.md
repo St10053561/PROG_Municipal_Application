@@ -119,7 +119,7 @@ Follow these steps to set up and run the **Municipal Services Application**:
  - **Contribution to Efficiency:**
      The ObservableCollection allows the ListBox in WPF to bind data, such that when there are changes in the collection, it reflects the changes in the user interface. This is important for the functionality called "Service Request Status" since the user must be able to view the reports they have submitted immediately after any change is made on them. It also shows the not only the list of reports but also the prority or non-prority reports to differentate on report prorities. It also makes easier to show the information for report detailing.
 ---
-# 2. **Binary Search Tree (BST)** 
+### 2. **Binary Search Tree (BST)** 
 - **Role:**
      The Binary Search Tree is intended to organize issue reports in a coherent manner, which supports efficient searching based on report numbers.
 - **Contribution to Efficiency:**
