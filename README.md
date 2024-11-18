@@ -73,24 +73,22 @@ Download the .zip file named ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_P
    - Main Menu sections:
      - **Report Issues** (enabled): Report issues with municipal services.
      - **Local Events and Announcements** (enabled): View and search for local events.
-     - **Service Request Status** (disabled).
+     - **Service Request Status** (enabled): View your Status of A Report and Report Information
 
 ## 🛠️ How to Use the Application
 
 ### **Main Menu**
    - **Report Issues**: Enables users to report municipal issues.
    - **Local Events and Announcements**: Displays upcoming events and recommendations based on user search history.
-   - **Service Request Status**: Disabled (feature in progress).
-
+   - **Service Request Status**: It displays the information of a issue report and the status of a report with functionalities with status tracking.
    - **Feedback Mechanism**: Prompts if the user wants to submit another issue or return to the Main Menu.
-   - **View Reports**: Displays submitted reports with incident details and status tracking.
-   - **Upcoming Events**: Shows upcoming local events in chronological order.
-
-### **Report Issues Page**
+     
+   ### **Report Issues Page**
    - **Location Input**: Enter the issue location using Maps API for accuracy.
    - **Category Selection**: Select the issue type (e.g., Roads, Sanitation, Utilities).
    - **Description Box**: Provide a detailed description of the issue.
    - **Media Attachment**: Attach images/documents to the report. Images are displayed as illustrations.
+   - **Prority Checkbox**: It allows to set a prority checked to a report or not.
    - **Delete Images**: Allows deletion of any attached image.
    - **Submit Button**: Submits the issue report and displays a confirmation message.
    - **View Reports**: View all submitted reports with tracking information.
@@ -102,7 +100,15 @@ Download the .zip file named ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_P
    - **Search Frequency**: Recommends events based on search frequency using a dictionary.
    - **Event Sorting**: Displays events in date order with a sorted dictionary.
 
----
+### **Status Update Status Report**
+   - **Initialization and Report Loading**: Loads reports from a temporary file and initializes data structures.
+   - **Data Structures**: Utilizes a Binary Search Tree for efficient report searching and a Min-Heap for priority management.
+   - **User Interaction**: Allows users to select reports and view detailed information, including attachments.
+   - **File Handling**: Displays file icons based on the type of attachments, differentiating images from other files.
+   - **Search Functionality**: Enables searching for reports by number with validation and feedback for non-existent reports.
+   - **Filtering Reports**: Provides options to filter by high priority and reset to show all reports.
+   - **UI Management**: Manages visibility and state of UI elements based on user interactions.
+   - **Event Handling**: Responds to user actions through event handlers for buttons and list selections.
 
 📊 Implementation Data Structure Report on Service Status
 
@@ -125,10 +131,16 @@ Download the .zip file named ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_P
 ## 📝 Features Implemented
 
 - **Main Menu**: Easy navigation between sections.
-- **Report Issues**: Submit and track municipal issues.
+- **Report Issues**:
+  - Submit and track municipal issues.
   - Location input with Maps API integration.
   - Media attachment and image management.
   - Feedback prompts and report tracking.
 - **Local Events and Announcements**:
   - Event search, view, and recommendation features.
-  - Sorted, categorized, and frequently searched events.
+  - Sorted, categorized, and frequently searched events
+- **Service Status Report**:
+   - Report Search , High Prority Report Search
+   - Detailed information on each Report
+   - Checking the Status of a Report
+
