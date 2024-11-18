@@ -113,23 +113,35 @@ Follow these steps to set up and run the **Municipal Services Application**:
 ---
 ## 📊 Implementation Data Structure Report on Service Status
 
-### 1. **ObservableCollection<IssueReport**  
+### 1. **ObservableCollection<IssueReport>**  
 - **Role:**
   This Collection is designed for the purpose of saving users' submitted reports. It enables expansion and contraction of its size. And it is effiency whenever there is an item added or removed. 
  - **Contribution to Efficiency:**
      The ObservableCollection allows the ListBox in WPF to bind data, such that when there are changes in the collection, it reflects the changes in the user interface. This is important for the functionality called "Service Request Status" since the user must be able to view the reports they have submitted immediately after any change is made on them. It also shows the not only the list of reports but also the prority or non-prority reports to differentate on report prorities. It also makes easier to show the information for report detailing.
 
-2. **BinarySearchTree (BST)**
- - Role: The Binary Search Tree is intended to organize issue reports in a coherent manner, which supports efficient searching based on report numbers.
- - Contribution to Efficiency: The BST allows for search operations to be implemented with O(log n) time complexity. This is especially advantageous in cases when a user requests a report by its number since details of the report can be accessed fast without going through all the reports in the list. this makes faster search on that tons of report also it shows the pop up information on that report number that user searched.
+---
 
-3. **MinHeap**
- - Role: The application uses a MinHeap data organization structure to keep issue reports in a hierarchy from the one with the least level of severity to the highest. The structure allows for quick retrieval of the most severe (high priority) reports so that urgent issues can be addressed without delays.
- - Contribution to Efficiency: The MinHeap guarantees that any new report can be inserted in O(log n) time, which implies that the addition of a new report becomes efficient, even when the number of reports increases. Furthermore, the minimum element (which is usually the highest priority report) can also be accessed in O(1) time indicating that it can be accessed at once. This kind of efficiency is very important in regard to the “Service Request Status” option because it allows the software to quickly load the most relevant reports for the user and help them in responding to burning issues more readily, especially those pertaining to the city council.
+# 2. **Binary Search Tree (BST)** 
+- **Role:**
+     The Binary Search Tree is intended to organize issue reports in a coherent manner, which supports efficient searching based on report numbers.
+- **Contribution to Efficiency:**
+    The BST allows for search operations to be implemented with O(log n) time complexity. This is especially advantageous in cases when a user requests a report by its number since details of the report can be accessed fast without going through all the reports in the list. this makes faster search on that tons of report also it shows the pop up information on that report number that user searched.
 
-4. **Graph**
- - Role: The primary purpose of the ReportGraph is to assist in understanding the various relationships existing between a set of issue reports. Picture it like a network where one issue report can be based on another. This way, when a new issue is reported, the application checks for interrelations between the new issue and the existing ones and helps organize workloads easily.
- - Contribution to Efficiency: Having an idea of these relationships allows the application to assess how many days it would take to resolve every report which would also depend on its significance. For instance, if report A is critical, and report B is critical for C which is dependent on report A, then the critical report A can be worked on first. This is important so that all the critical issues are raised and dealt with in a timely manner enhancing the efficiency of the entire system.
+  ---
+
+### 3. **MinHeap**  
+- **Role:**
+    The application uses a MinHeap data organization structure to keep issue reports in a hierarchy from the one with the least level of severity to the highest. The structure allows for quick retrieval of the most severe (high priority) reports so that urgent issues can be addressed without delays.
+- **Contribution to Efficiency:**
+    The MinHeap guarantees that any new report can be inserted in O(log n) time, which implies that the addition of a new report becomes efficient, even when the number of reports increases. Furthermore, the minimum element (which is usually the highest priority report) can also be accessed in O(1) time indicating that it can be accessed at once. This kind of efficiency is very important in regard to the “Service Request Status” option because it allows the software to quickly load the most relevant reports for the user and help them in responding to burning issues more readily, especially those pertaining to the city council.
+
+---
+
+### 4. **Graph** 
+- **Role:**
+    The primary purpose of the ReportGraph is to assist in understanding the various relationships existing between a set of issue reports. Picture it like a network where one issue report can be based on another. This way, when a new issue is reported, the application checks for interrelations between the new issue and the existing ones and helps organize workloads easily.
+- **Contribution to Efficiency:**
+    Having an idea of these relationships allows the application to assess how many days it would take to resolve every report which would also depend on its significance. For instance, if report A is critical, and report B is critical for C which is dependent on report A, then the critical report A can be worked on first. This is important so that all the critical issues are raised and dealt with in a timely manner enhancing the efficiency of the entire system.
 
 ---
 ## 📝 Features Implemented
