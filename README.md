@@ -24,8 +24,6 @@ The Municipal Services Application is designed to streamline municipal services 
 
 Follow these steps to set up and run the **Municipal Services Application**:
 
----
-
 ### 1. **Clone the GitHub Repository**  
 
 1. Open your browser and visit the repository:  
@@ -36,15 +34,11 @@ Follow these steps to set up and run the **Municipal Services Application**:
 4. Extract the downloaded file (**`PROG_Municipal_Application-main.zip`**) to a preferred location.  
 5. Locate the solution file: **`MunicipalService.sln`**.
 
----
-
 ### 2. **Open the Project in Visual Studio**  
 
 1. Launch **Visual Studio 2022**.  
 2. Navigate to **File** → **Open** → **Project/Solution**.  
 3. Browse to the folder where you extracted the project and select **`MunicipalService.sln`**.  
-
----
 
 ### 3. **Manual Download (Alternative Method)**  
 
@@ -117,7 +111,7 @@ Follow these steps to set up and run the **Municipal Services Application**:
    - **Event Handling**: Responds to user actions through event handlers for buttons and list selections.
 
 ---
-📊 Implementation Data Structure Report on Service Status
+## 📊 Implementation Data Structure Report on Service Status
 
 1. **ObservableCollection<IssueReport>**
  - Role: This Collection is designed for the purpose of saving users' submitted reports. It enables expansion and contraction of its size. And it is effiency whenever there is an item added or removed. 
