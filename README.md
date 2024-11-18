@@ -113,9 +113,11 @@ Follow these steps to set up and run the **Municipal Services Application**:
 ---
 ## 📊 Implementation Data Structure Report on Service Status
 
-1. **ObservableCollection<IssueReport>**
- - Role: This Collection is designed for the purpose of saving users' submitted reports. It enables expansion and contraction of its size. And it is effiency whenever there is an item added or removed. 
- - Contribution to Efficiency: The ObservableCollection allows the ListBox in WPF to bind data, such that when there are changes in the collection, it reflects the changes in the user interface. This is important for the functionality called "Service Request Status" since the user must be able to view the reports they have submitted immediately after any change is made on them. It also shows the not only the list of reports but also the prority or non-prority reports to differentate on report prorities. It also makes easier to show the information for report detailing.
+### 1. **ObservableCollection<IssueReport**  
+- **Role:**
+  This Collection is designed for the purpose of saving users' submitted reports. It enables expansion and contraction of its size. And it is effiency whenever there is an item added or removed. 
+ - **Contribution to Efficiency:**
+     The ObservableCollection allows the ListBox in WPF to bind data, such that when there are changes in the collection, it reflects the changes in the user interface. This is important for the functionality called "Service Request Status" since the user must be able to view the reports they have submitted immediately after any change is made on them. It also shows the not only the list of reports but also the prority or non-prority reports to differentate on report prorities. It also makes easier to show the information for report detailing.
 
 2. **BinarySearchTree (BST)**
  - Role: The Binary Search Tree is intended to organize issue reports in a coherent manner, which supports efficient searching based on report numbers.
