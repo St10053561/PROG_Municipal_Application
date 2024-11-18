@@ -5,7 +5,8 @@
 **Platform**: WPF (Windows Presentation Foundation)  
 **IDE**: Visual Studio 2022  
 
-The Municipal Services Application helps streamline municipal services in South Africa by allowing residents to report issues, view local events, and track municipal service statuses.
+The Municipal Services Application is designed to streamline municipal services in South Africa, providing residents with tools to report issues, view local events, and track service request statuses efficiently.
+
 
 ---
 
@@ -19,36 +20,41 @@ The Municipal Services Application helps streamline municipal services in South 
 
 ---
 
-## 🚀 Setup and Installation on Github Clone & Manual Download Project
+## 🚀 Setup and Installation Guide
 
-### 1. **Clone the GitHub Repository** 
-     - Go to the GitHub repository page: https://github.com/St10053561/PROG_Municipal_Application
-     - Click on the Blue Button called '<> Code'
-     - Click on Download Zip
-     - Extract the 'PROG_Municipal_Application-main.zip'
-
-### 1.2. **Extract the ZIP File**
-   - Extract the downloaded ZIP to a local folder.
-   - Locate the solution file: **`MunicipalService.sln`**.
-
-### 1.3. **Open in Visual Studio**
-   - Launch Visual Studio 2022.
-   - Go to **File** → **Open** → **Project/Solution**.
-   - Navigate to the extracted folder and select **`MunicipalService.sln`**.
-
-### 2 **Download the Manual Project**
-Download the .zip file named ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_PART 3 from the specified repository or location.
-
-### 2.2. **Extract the ZIP File**
-   - Extract the downloaded ZIP to a local folder.
-   - Locate the solution file: **`MunicipalService.sln`**.
-
-### 2.3. **Open in Visual Studio**
-   - Launch Visual Studio 2022.
-   - Go to **File** → **Open** → **Project/Solution**.
-   - Navigate to the extracted folder and select **`MunicipalService.sln`**.
+Follow these steps to set up and run the **Municipal Services Application**:
 
 ---
+
+### 1. **Clone the GitHub Repository**  
+
+1. Open your browser and visit the repository:  
+   [Municipal Services Application GitHub Repository](https://github.com/St10053561/PROG_Municipal_Application)  
+   
+2. Click the **Code** button (green dropdown).  
+3. Select **Download ZIP** to save the project files locally.  
+4. Extract the downloaded file (**`PROG_Municipal_Application-main.zip`**) to a preferred location.  
+5. Locate the solution file: **`MunicipalService.sln`**.
+
+---
+
+### 2. **Open the Project in Visual Studio**  
+
+1. Launch **Visual Studio 2022**.  
+2. Navigate to **File** → **Open** → **Project/Solution**.  
+3. Browse to the folder where you extracted the project and select **`MunicipalService.sln`**.  
+
+---
+
+### 3. **Manual Download (Alternative Method)**  
+
+1. Download the file named:  
+   **`ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_PART 3.zip`** from the provided location.  
+   
+2. Extract the ZIP file to your local system.  
+3. Locate the solution file: **`MunicipalService.sln`**.  
+4. Open it using **Visual Studio 2022** by following the steps in Section 2.  
+
 
 ## 🔧 Compiling the Project
 
@@ -110,6 +116,7 @@ Download the .zip file named ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_P
    - **UI Management**: Manages visibility and state of UI elements based on user interactions.
    - **Event Handling**: Responds to user actions through event handlers for buttons and list selections.
 
+---
 📊 Implementation Data Structure Report on Service Status
 
 1. **ObservableCollection<IssueReport>**
@@ -128,6 +135,7 @@ Download the .zip file named ST10053561_Venkata Vikranth Jannatha_PROG7312_POE_P
  - Role: The primary purpose of the ReportGraph is to assist in understanding the various relationships existing between a set of issue reports. Picture it like a network where one issue report can be based on another. This way, when a new issue is reported, the application checks for interrelations between the new issue and the existing ones and helps organize workloads easily.
  - Contribution to Efficiency: Having an idea of these relationships allows the application to assess how many days it would take to resolve every report which would also depend on its significance. For instance, if report A is critical, and report B is critical for C which is dependent on report A, then the critical report A can be worked on first. This is important so that all the critical issues are raised and dealt with in a timely manner enhancing the efficiency of the entire system.
 
+---
 ## 📝 Features Implemented
 
 - **Main Menu**: Easy navigation between sections.
